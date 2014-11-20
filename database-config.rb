@@ -2,8 +2,12 @@
  
 #Sets development database to sqlite
 configure :development do
- set :database, 'sqlite3:///tmp/dev.db'
+ set :database, 'sqlite3:/tmp/dev.db'
  set :show_exceptions, true
+
+ ActiveRecord::Base.establish_connection(
+ 	:adapter  => 'sqlite3',
+  	:database => '/tmp/dev.db')
 end
  
 #Sets production database to postgreSQL
